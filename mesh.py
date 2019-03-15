@@ -17,19 +17,21 @@ def make_model_matrix(translate, rotation, scale):
     Returns:
         -model_matrix: 4x4 numpy array
     """
+    sm = tr.scale(scale)
+    rx, ry, rz = rotation
+    rzm = tr.rotate(rz, [0,0,1]).T
+    rym = tr.rotate(ry, [0,1,0]).T
+    rxm = tr.rotate(rx, [1,0,0]).T
+    trm = tr.translate(translate).T
+    mm = trm @ rxm @ rym @ rzm @ sm
+    return mm
 
-        sm = tr.scale(scale)
-        rx, ry, rz = rotation
-        rzm = tr.rotate(rz, [0,0,1]).T
-        rym = tr.rotate(ry, [0,1,0]).T
-        rxm = tr.rotate(rx, [1,0,0]).T
-        trm = tr.translate(translate).T
-        mm = trm @ rxm @ rym @ rzm @ sm
-        return mm
 
-print('Hello!')
 
 mm = make_model_matrix([1,2,3], [90, 45, 0], [2,2,2])
 print(mm)
 
-io.read_mesh('monkey.obj')
+vertices, faces, normals, texcoords = io.read_mesh('monkey.obj')
+
+assert len(vertices[0]) == 3, "Vertices are 3D"
+assert len(faces[0]) == 3, "Mesh must be triangulated"
