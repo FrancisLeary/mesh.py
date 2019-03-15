@@ -29,4 +29,3 @@ print('Hello!')
 
 mm = make_model_matrix([1,2,3], [90, 45, 0], [2,2,2])
 print(mm)
-print("hdhdhd")
