@@ -27,11 +27,22 @@ def make_model_matrix(translate, rotation, scale):
     return mm
 
 
+class Mesh:
 
-mm = make_model_matrix([1,2,3], [90, 45, 0], [2,2,2])
-print(mm)
+    def __init__(self, obj_filename, position, rotation, scale):
 
-vertices, faces, normals, texcoords = io.read_mesh('monkey.obj')
+        vertices, faces, normals, texcoords = io.read_mesh(obj_filename)
+        assert len(vertices[0]) == 3, "Vertices are 3D"
+        assert len(faces[0]) == 3, "Mesh must be triangulated"
+        self.vertices = vertices
+        self.faces = faces
+        self.position = position
+        self.rotation = rotation
+        self.scale = scale
 
-assert len(vertices[0]) == 3, "Vertices are 3D"
-assert len(faces[0]) == 3, "Mesh must be triangulated"
+    @property
+    def model_matrix(self):
+        return make_model_matrix(self.position, self.rotation, self.scale)
+
+
+monkey = Mesh('monkey.obj', [1, 2, 3], [90, 100, 10], [1, 2, 3])
