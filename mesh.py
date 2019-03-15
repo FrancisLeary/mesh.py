@@ -1,5 +1,7 @@
 import numpy as np
+from vispy import io
 from vispy.util import transforms as tr
+
 
 np.set_printoptions (suppress=True, precision=2)
 
@@ -29,3 +31,5 @@ print('Hello!')
 
 mm = make_model_matrix([1,2,3], [90, 45, 0], [2,2,2])
 print(mm)
+
+io.read_mesh('monkey.obj')
