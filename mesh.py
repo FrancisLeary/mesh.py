@@ -13,7 +13,7 @@ def make_model_matrix(translate, rotation, scale):
         -scale: x,y,z scale.
 
     Returns:
-        -model_matrix: 4x4 Numpy Array
+        -model_matrix: 4x4 numpy array
     """
 
         sm = tr.scale(scale)
@@ -29,3 +29,4 @@ print('Hello!')
 
 mm = make_model_matrix([1,2,3], [90, 45, 0], [2,2,2])
 print(mm)
+print("hdhdhd")
