@@ -2,9 +2,8 @@ import numpy as np
 from vispy import io
 from vispy.util import transforms as tr
 
-#This is for makings the numbers look better
 
-np.set_printoptions (suppress=True, precision=2)
+
 
 #We define a function. In a function you do not know what is happening inside. Just give input and get output
 
