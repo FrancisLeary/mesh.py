@@ -45,6 +45,3 @@ class Mesh:
     @property
     def model_matrix(self):
         return make_model_matrix(self.position, self.rotation, self.scale)
-
-
-monkey = Mesh('monkey.obj', [1, 2, 3], [90, 100, 10], [1, 2, 3])
